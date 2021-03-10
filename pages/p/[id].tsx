@@ -4,7 +4,6 @@ import ReactMarkdown from 'react-markdown';
 import Layout from '../../components/Layout';
 import Router from 'next/router';
 import { PostProps } from '../../components/Post';
-import { useSession } from 'next-auth/client';
 import prisma from '../../lib/prisma';
 
 export const getServerSideProps: GetServerSideProps = async ({ params }) => {
@@ -38,12 +37,8 @@ async function deletePost(id: number): Promise<void> {
 }
 
 const Post: React.FC<PostProps> = (props) => {
-  const [session, loading] = useSession();
-  if (loading) {
-    return <div>Authenticating ...</div>;
-  }
-  const userHasValidSession = Boolean(session);
-  const postBelongsToUser = session?.user?.email === props.author?.email;
+  const userHasValidSession = true;
+  const postBelongsToUser = 'jj';
   let title = props.title;
   if (!props.published) {
     title = `${title} (Draft)`;
