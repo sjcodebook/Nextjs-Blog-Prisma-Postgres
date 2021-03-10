@@ -30,7 +30,7 @@ async function publishPost(id: number): Promise<void> {
 }
 
 async function deletePost(id: number): Promise<void> {
-  await fetch(`http://localhost:3000/api/post/${id}`, {
+  await fetch(`https://nextjs-blog-prisma-postgres.vercel.app/api/post/${id}`, {
     method: 'DELETE',
   });
   Router.push('/');
